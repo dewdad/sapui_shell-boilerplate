@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>SAPUI5 Shell boilerplate</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <script src="/sap/ui5/latest/resources/sap-ui-core.js"
+            type="text/javascript"
+            id="sap-ui-bootstrap"
+            data-sap-ui-libs="sap.ui.ux3, sap.ui.commons"
+            data-sap-ui-theme="sap_goldreflection"
+            ></script>
+<!--            data-sap-ui-theme="theme2"
+            data-sap-ui-theme-roots='{
+                "theme1" : "themes/theme1",
+                "theme2" : "themes/theme2"
+            }'
+    ></script>-->
+    <!--<script> jQuery.sap.registerModulePath('app','/rootdir/sapui/app'); </script>-->
+    <script> sap.ui.localResources("app"); </script>
+    <script type="text/javascript" src="libs/underscore.js"></script>
+    <script type="text/javascript" src="libs/funcjs.js"></script>
+    <script type="text/javascript" src="libs/sui_workarounds.js"></script>
+    <script type="text/javascript" src="libs/sui_short.js"></script>
+    <script type="text/javascript" src="libs/sui5ext.js"></script>
+    <script type="text/javascript" src="libs/app.js"></script>
+
+    <script type="text/javascript">
+
+        jQuery.sap.log.setLevel(jQuery.sap.log.LogLevel['ERROR']);
+        // load custom theme css
+        if(sui.isCustomTheme()){
+            $.sap.includeStyleSheet(sui.getThemePath()+'/custom.css');
+        }
+
+        var navItems = [
+            "home",
+            {title: 'tab with subtabs', items:['tab1', 'tab2']}
+        ];
+
+        sui.UX3Shell({
+            appTitle: "SAPUI Shell Boilerplate",
+            navItems:navItems,
+            placeAt: "content"
+        });
+
+    </script>
+</head>
+
+<body class="sapUiBody" role="application">
+<div id="content"></div>
+</body>
+</html>  
