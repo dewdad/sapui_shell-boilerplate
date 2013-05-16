@@ -1,11 +1,10 @@
-sap.ui.jsview("app.tabs.tab2", {
+sap.ui.jsview("js.tabs.tab2", {
 
     getControllerName : function() {
-        return "app.tabs.tab2";
+        return "js.tabs.tab2";
     },
 
     createContent : function(oController) {
         return new sap.ui.commons.TextView({text: 'tab2'});
     }
-
 });

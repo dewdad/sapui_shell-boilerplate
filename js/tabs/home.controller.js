@@ -1,4 +1,4 @@
-sap.ui.controller("app.tabs.home", {
+sap.ui.controller("js.tabs.home", {
 
 /**
 * Called when a controller is instantiated and its View controls (if available) are already created.

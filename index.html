@@ -15,8 +15,8 @@
                 "theme2" : "themes/theme2"
             }'
     ></script>-->
-    <!--<script> jQuery.sap.registerModulePath('app','/rootdir/sapui/app'); </script>-->
-    <script> sap.ui.localResources("js"); </script>
+    <!--<script> jQuery.sap.registerModulePath('app','js'); </script>-->
+    <!--<script> sap.ui.localResources("js"); </script>-->
     <script type="text/javascript" src="lib/sapui/underscore.js"></script>
     <script type="text/javascript" src="lib/sapui/funcjs.js"></script>
     <script type="text/javascript" src="lib/sapui/sui_workarounds.js"></script>
@@ -37,10 +37,12 @@
             {title: 'tab with subtabs', items:['tab1', 'tab2']}
         ];
 
+        // this wrapper is backwards function is backwards compatible with "new sap.ui.ux3.Shell(sId, mSettings)"
         sui.UX3Shell({
             appTitle: "SAPUI Shell Boilerplate",
             navItems:navItems,
-            placeAt: "content"
+            placeAt: "content"/*,
+            loadTabsFrom: "js/tabs"*/  // this is default as configured in the boilerplate
         });
 
     </script>
