@@ -9,7 +9,7 @@
             data-sap-ui-libs="sap.ui.ux3, sap.ui.commons"
             data-sap-ui-theme="sap_goldreflection"
             ></script>
-<!--            data-sap-ui-theme="theme2"
+<!--            data-sap-ui-theme="sap_goldreflection"
             data-sap-ui-theme-roots='{
                 "theme1" : "themes/theme1",
                 "theme2" : "themes/theme2"
@@ -27,14 +27,18 @@
     <script type="text/javascript">
 
         jQuery.sap.log.setLevel(jQuery.sap.log.LogLevel['ERROR']);
+        //load resource bundles
+        appText = sui.localeTextGetter('resources/i18n/i18n.properties');
+
         // load custom theme css
         if(sui.isCustomTheme()){
             $.sap.includeStyleSheet(sui.getThemePath()+'/custom.css');
         }
 
+        // The strings are dictionary keys
         var navItems = [
-            "home",
-            {title: 'tab with subtabs', items:['tab1', 'tab2']}
+            'ui_shell_tab-home',
+            {title: 'ui_shell_tab-tab_with_subtabs', items:['ui_shell_tab-tab1', 'ui_shell_tab-tab2']}
         ];
 
         // this wrapper is backwards function is backwards compatible with "new sap.ui.ux3.Shell(sId, mSettings)"
