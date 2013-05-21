@@ -17,13 +17,14 @@
     ></script>-->
     <!--<script> jQuery.sap.registerModulePath('app','app'); </script>-->
     <!--<script> sap.ui.localResources("app"); </script>-->
-    <script type="text/javascript" src="libs/js/underscore.js"></script>
+
+<!--    <script type="text/javascript" src="libs/js/underscore.js"></script>
     <script type="text/javascript" src="libs/js/funcjs.js"></script>
     <script type="text/javascript" src="libs/sapui/sui_workarounds.js"></script>
-    <script type="text/javascript" src="libs/sapui/sui_short.js"></script>
+    <script type="text/javascript" src="libs/sapui/sui.js"></script>
     <script type="text/javascript" src="libs/sapui/sui5ext.js"></script>
-    <script type="text/javascript" src="libs/sapui/app.js"></script>
-
+    <script type="text/javascript" src="libs/sapui/app.js"></script>-->
+    <script type="text/javascript" src="libs/misc/LAB.min.js"></script>
     <script type="text/javascript">
         // minification
         $.urlParam = function(name){
@@ -37,35 +38,52 @@
         };
 
         if($.urlParam('debug')==='true'){
-
+            $LAB
+                .script("libs/misc/underscore.js")
+                .script("libs/misc/funcjs.js")
+                .script("libs/misc//mock.js")
+                .script("libs/sapui/sui_workarounds.js")
+                .script("libs/sapui/sui.js")
+                .script("libs/sapui/sui5ext.js")
+                .script("libs/sapui/app.js")
+                    .wait(function(){
+                        initApp();
+                    });
         }else{
-
+            $LAB
+                .script("libs/misc/underscore.js")
+                .script("libs/app.min.js")
+                    .wait(function(){
+                        initApp();
+                    });;
         }
 
         // set logging level
         jQuery.sap.log.setLevel(jQuery.sap.log.LogLevel['ERROR']);
 
-        // load locale resource
-        appText = sui.localeTextGetter('resources/i18n/i18n.properties');
+        function initApp(){
+            // load locale resource
+            appText = sui.localeTextGetter('resources/i18n/i18n.properties');
 
-        // load custom theme css
-        if(sui.isCustomTheme()){
-            $.sap.includeStyleSheet(sui.getThemePath()+'/custom.css');
+            // load custom theme css
+            if(sui.isCustomTheme()){
+                $.sap.includeStyleSheet(sui.getThemePath()+'/custom.css');
+            }
+
+            // The strings are dictionary keys
+            var navItems = [
+                'ui_shell_tab-home',
+                {title: 'ui_shell_tab-tab_with_subtabs', items:['ui_shell_tab-tab1', 'ui_shell_tab-tab2']}
+            ];
+
+            // this wrapper is backwards function is backwards compatible with "new sap.ui.ux3.Shell(sId, mSettings)"
+            sui.UX3Shell({
+                appTitle: "SAPUI Shell Boilerplate",
+                navItems:navItems,
+                placeAt: "content"/*,
+                loadTabsFrom: "app/tabs"*/  // this is default as configured in the boilerplate
+            });
         }
-
-        // The strings are dictionary keys
-        var navItems = [
-            'ui_shell_tab-home',
-            {title: 'ui_shell_tab-tab_with_subtabs', items:['ui_shell_tab-tab1', 'ui_shell_tab-tab2']}
-        ];
-
-        // this wrapper is backwards function is backwards compatible with "new sap.ui.ux3.Shell(sId, mSettings)"
-        sui.UX3Shell({
-            appTitle: "SAPUI Shell Boilerplate",
-            navItems:navItems,
-            placeAt: "content"/*,
-            loadTabsFrom: "app/tabs"*/  // this is default as configured in the boilerplate
-        });
 
     </script>
 </head>

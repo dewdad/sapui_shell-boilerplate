@@ -1,0 +1,6 @@
+misc\funcjs.js
+misc\mock.js
+sapui\sui_workarounds.js
+sapui\sui.js
+sapui\sui5ext.js
+sapui\app.js

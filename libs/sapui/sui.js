@@ -752,14 +752,14 @@ sui = {
 
         var settingsIndex = typeof(sId)=='object'? 0: 1; // settings index, need to find settings object in the arugments for the c'tor
         var oSettings = arguments[settingsIndex] || {};
-        var tabLoadPath = oSettings.loadTabsFrom || 'js/tabs';
+        var tabLoadPath = oSettings.loadTabsFrom || 'app/tabs';
         var tabViewNamePrefix = tabLoadPath.replace('/','.');
 
         sap.ui.localResources(tabLoadPath.split('/')[0]);
 
         var getContent = function(key) {
-            var tabName = key.replace(/^ui_shell_tab-/,'');
-            return sui.view(tabViewNamePrefix+'.'+tabName);
+            //var tabName = key.replace(/^ui_shell_tab-/,'');
+            return sui.view(tabViewNamePrefix+'.'+key);
         };
         var navigateToHash = function(navHashId) {
             var navHashId = navHashId || "ui_shell_tab-" + (window.location.href.split("#")[1] || "");
@@ -774,15 +774,15 @@ sui = {
             theShell.setContent(getContent(navTab));
         };
 
-        sap.ui.getCore().attachInitEvent(function() {
-            $(window).bind('hashchange', function() {
-                if(!!window.__ignoreHashChange){
-                     window.__ignoreHashChange = false;
-                     return;
-                }
-                navigateToHash();
-            });
-        });
+//        sap.ui.getCore().attachInitEvent(function() {
+//            $(window).bind('hashchange', function() {
+//                if(!!window.__ignoreHashChange){
+//                     window.__ignoreHashChange = false;
+//                     return;
+//                }
+//                navigateToHash();
+//            });
+//        });
 
         if(!!arguments[settingsIndex].navItems){
             arguments[settingsIndex].worksetItems = sui.makeShellWorkSetItems(arguments[settingsIndex].navItems);
@@ -800,6 +800,13 @@ sui = {
             theShell.placeAt(oSettings.placeAt);
         }
         $(function() {
+            $(window).bind('hashchange', function() {
+                if(!!window.__ignoreHashChange){
+                     window.__ignoreHashChange = false;
+                     return;
+                }
+                navigateToHash();
+            });
             navigateToHash();
         });
         return theShell;

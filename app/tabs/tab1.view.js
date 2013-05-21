@@ -1,7 +1,7 @@
-sap.ui.jsview("js.tabs.tab1", {
+sap.ui.jsview("app.tabs.tab1", {
 
     getControllerName : function() {
-        return "js.tabs.tab1";
+        return "app.tabs.tab1";
     },
 
     createContent : function(oController) {
