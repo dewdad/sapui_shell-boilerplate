@@ -15,19 +15,37 @@
                 "theme2" : "themes/theme2"
             }'
     ></script>-->
-    <!--<script> jQuery.sap.registerModulePath('app','js'); </script>-->
-    <!--<script> sap.ui.localResources("js"); </script>-->
-    <script type="text/javascript" src="lib/sapui/underscore.js"></script>
-    <script type="text/javascript" src="lib/sapui/funcjs.js"></script>
-    <script type="text/javascript" src="lib/sapui/sui_workarounds.js"></script>
-    <script type="text/javascript" src="lib/sapui/sui_short.js"></script>
-    <script type="text/javascript" src="lib/sapui/sui5ext.js"></script>
-    <script type="text/javascript" src="lib/sapui/app.js"></script>
+    <!--<script> jQuery.sap.registerModulePath('app','app'); </script>-->
+    <!--<script> sap.ui.localResources("app"); </script>-->
+    <script type="text/javascript" src="libs/js/underscore.js"></script>
+    <script type="text/javascript" src="libs/js/funcjs.js"></script>
+    <script type="text/javascript" src="libs/sapui/sui_workarounds.js"></script>
+    <script type="text/javascript" src="libs/sapui/sui_short.js"></script>
+    <script type="text/javascript" src="libs/sapui/sui5ext.js"></script>
+    <script type="text/javascript" src="libs/sapui/app.js"></script>
 
     <script type="text/javascript">
+        // minification
+        $.urlParam = function(name){
+            var results = new RegExp('[\\?&]' + name + '=([^&#]*)').exec(window.location.href);
 
+            if(results===null) {
+                return null;
+            }else{
+                return results[1] || 0;
+            }
+        };
+
+        if($.urlParam('debug')==='true'){
+
+        }else{
+
+        }
+
+        // set logging level
         jQuery.sap.log.setLevel(jQuery.sap.log.LogLevel['ERROR']);
-        //load local resource
+
+        // load locale resource
         appText = sui.localeTextGetter('resources/i18n/i18n.properties');
 
         // load custom theme css
@@ -46,7 +64,7 @@
             appTitle: "SAPUI Shell Boilerplate",
             navItems:navItems,
             placeAt: "content"/*,
-            loadTabsFrom: "js/tabs"*/  // this is default as configured in the boilerplate
+            loadTabsFrom: "app/tabs"*/  // this is default as configured in the boilerplate
         });
 
     </script>
