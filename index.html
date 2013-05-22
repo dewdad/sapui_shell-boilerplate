@@ -9,6 +9,15 @@
         data-sap-ui-libs="sap.ui.ux3, sap.ui.commons"
         data-sap-ui-theme="sap_goldreflection"
     ></script>
+    <style type="text/css">
+        .sapUiUx3ShellCanvas{
+            bottom:6px; /* utilize the entire space of the shell's content */
+        }
+        .sapUiUx3ShellContent{
+            height: 90%;
+            /*overflow-y: hidden;*/
+        }
+    </style>
 <!--
         data-sap-ui-theme="sap_goldreflection"
         data-sap-ui-theme-roots='{
@@ -72,7 +81,7 @@
             // The strings are dictionary keys
             var navItems = [
                 'ui_shell_tab-home',
-                {title: 'ui_shell_tab-tab_with_subtabs', items:['ui_shell_tab-tab1', 'ui_shell_tab-tab2']}
+                {title: 'ui_shell_tab-configuration', items:['ui_shell_tab-parking_setup', 'ui_shell_tab-tab2']}
             ];
 
             // this wrapper is backwards function is backwards compatible with "new sap.ui.ux3.Shell(sId, mSettings)"

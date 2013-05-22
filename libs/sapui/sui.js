@@ -29,7 +29,8 @@ sui = {
             strArg = true;
         }
 
-        viewObj.type = oView.type || sap.ui.core.mvc.ViewType.JS;
+        //viewObj.type = oView.type || sap.ui.core.mvc.ViewType.JS;
+        $.extend(viewObj, {type: sap.ui.core.mvc.ViewType.JS, height:'100%'});
 
         var vResource = sui.getViewResource();
         if(!!vResource && !!viewObj.viewName && viewObj.viewName.search('^'+vResource)<0){
@@ -579,6 +580,12 @@ sui = {
     Lbl:function (sId, mSettings) {
         return new sap.ui.commons.Label(sId, mSettings);
     },
+    Title:function (sId, mSettings) {
+        return new sap.ui.commons.Title(sId, mSettings);
+    },
+    Form:function (sId, mSettings) {
+        return new sap.ui.commons.Form(sId, mSettings);
+    },
     /**
      * Constructor for a new Column.
      *
@@ -774,16 +781,6 @@ sui = {
             theShell.setContent(getContent(navTab));
         };
 
-//        sap.ui.getCore().attachInitEvent(function() {
-//            $(window).bind('hashchange', function() {
-//                if(!!window.__ignoreHashChange){
-//                     window.__ignoreHashChange = false;
-//                     return;
-//                }
-//                navigateToHash();
-//            });
-//        });
-
         if(!!arguments[settingsIndex].navItems){
             arguments[settingsIndex].worksetItems = sui.makeShellWorkSetItems(arguments[settingsIndex].navItems);
             delFromObjPath(arguments[settingsIndex],'navItems');
@@ -835,6 +832,16 @@ sui = {
     },
     Panel: function(sId, mSettings){
         return new sap.ui.commons.Panel (sId, mSettings);
+    },
+    SplitterV: function(sId, mSettings){
+        var settingsIndex = typeof(sId)=='object'? 0: 1; // settings index, need to find settings object in the arugments for the c'tor
+        arguments[settingsIndex].splitterOrientation = sap.ui.commons.Orientation.Vertical;
+        return new sap.ui.commons.Splitter(sId, mSettings);
+    },
+    SplitterH: function(sId, mSettings){
+        var settingsIndex = typeof(sId)=='object'? 0: 1; // settings index, need to find settings object in the arugments for the c'tor
+        arguments[settingsIndex].splitterOrientation = sap.ui.commons.Orientation.Horizontal;
+        return new sap.ui.commons.Splitter(sId, mSettings);
     },
     HTML: function(sId, mSettings){
         return new sap.ui.core.HTML (sId, mSettings);
