@@ -1,0 +1,77 @@
+.sapUiUx3ShellHeader> hr {
+    display:none;
+}
+.sapUiUx3ShellToolPaletteArea {
+    background-color: transparent;
+}
+.sapUiUx3ShellPaneBarRight {
+    background-color:transparent;
+}
+.sapUiUx3ShellPaneBar {
+    background-color:transparent;
+}
+.sapUiUx3ShellCanvasBackground {
+    background-color:transparent;
+}
+
+#myShell-wsBar{
+    width: 60%;
+    margin: 0 auto;
+}
+.sapUiUx3ShellHeader{
+    text-shadow: 1px 1px 2px #333333;
+    background: transparent;
+ /*   color: #f2f2f2;
+    background-image: -moz-linear-gradient(top,#616467 0,#2c2c2c 108px,#2c2c2c);
+    background-image: -webkit-linear-gradient(top,rgb(164, 198, 231) 0,rgb(0, 59, 92) 108px,#2c2c2c);
+    background-image: -ms-linear-gradient(top,#616467 0,#2c2c2c 108px,#2c2c2c);
+    background-image: linear-gradient(top,#616467 0,#2c2c2c 108px,#2c2c2c);
+    background-position: left top;
+    padding: 9px 20px 0;*/
+}
+.sapUiUx3ShellHeader>img, .sapUiUx3ShellHeader>h1 {
+    margin-top: 0 !important;
+}
+.sapUiUx3ShellBg {
+    background-color: #cefff8;
+}
+.sapUiUx3ShellBgImg_xgradient {
+    background-color: transparent;
+    background: -moz-linear-gradient(top,  rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(100%,rgba(255,255,255,0))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#00ffffff',GradientType=0 ); /* IE6-9 */
+}
+.sapUiUx3ShellBgImg {
+    background-image: -moz-linear-gradient(top,#616467 0,#2c2c2c 108px,#2c2c2c);
+    background-image: -webkit-linear-gradient(top,#616467 0,#2c2c2c 108px,#2c2c2c);
+    background-image: -ms-linear-gradient(top,#616467 0,#2c2c2c 108px,#2c2c2c);
+    background-image: linear-gradient(top,#616467 0,#2c2c2c 108px,#2c2c2c);
+    -moz-background-size: 100% 100%;
+    background-size: 100% 100%;
+    background-position: left top;
+}
+.sapUiUx3ShellCanvas{
+
+}
+
+.sapUiPanelAreaDesignFill > .sapUiPanelCont {
+    background-color: transparent;
+}
+
+.sapUiUx3ShellWorksetBar{
+    margin: 22px 40px 0 40px;
+}
+
+.sapUiUx3ShellCanvas {
+    top: 72px;
+}
+.sapUiUx3ShellCanvasBackgroundRight {
+    top: -36px;
+}
+.sapUiUx3ShellToolPaletteArea, .sapUiUx3ShellPaneBar{
+    top: 72px;
+}
