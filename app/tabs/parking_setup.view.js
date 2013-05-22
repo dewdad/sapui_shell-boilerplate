@@ -25,7 +25,9 @@ sap.ui.jsview("app.tabs.parking_setup", {
             }
         });
 
-        var oForm = new sap.ui.commons.form.Form(this.createId('parking_resources_form'),{
+        var oLayout1 = new sap.ui.commons.form.GridLayout();
+        //var oLayout2 = new sap.ui.commons.form.ResponsiveLayout();
+        var oForm1 = new sap.ui.commons.form.Form("F1",{
             title: new sap.ui.commons.Title({text: "Address Data", tooltip: "Title tooltip"}),
             layout: oLayout1,
             formContainers: [
@@ -118,9 +120,7 @@ sap.ui.jsview("app.tabs.parking_setup", {
 
         return sui.SplitterV({
             firstPaneContent:[oTree],
-            secondPaneContent:[
-                //oForm
-            ],
+            secondPaneContent:[oForm1],
             splitterPosition: '25%',
             minSizeSecondPane:"70%"
         });
