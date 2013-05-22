@@ -586,6 +586,18 @@ sui = {
     Form:function (sId, mSettings) {
         return new sap.ui.commons.Form(sId, mSettings);
     },
+    FormContainer:function (sId, mSettings) {
+        return new sap.ui.commons.form.FormContainer(sId, mSettings);
+    },
+    FormElement:function (sId, mSettings) {
+        return new sap.ui.commons.form.FormElement(sId, mSettings);
+    },
+    GridLayout:function (sId, mSettings) {
+        return new sap.ui.commons.form.GridLayout(sId, mSettings);
+    },
+    GridElementData:function (sId, mSettings) {
+        return new sap.ui.commons.form.GridElementData(sId, mSettings);
+    },
     /**
      * Constructor for a new Column.
      *

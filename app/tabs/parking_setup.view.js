@@ -25,68 +25,38 @@ sap.ui.jsview("app.tabs.parking_setup", {
             }
         });
 
-        var oLayout1 = new sap.ui.commons.form.GridLayout();
+        //var oLayout1 = new sap.ui.commons.form.GridLayout();
+        var oLayout1 = new sap.ui.commons.form.ResponsiveLayout();
+        var formContainer;
+        var gridFieldMedWidth = function(){return new sap.ui.commons.layout.ResponsiveFlowLayoutData({linebreak: true, margin: false})}
+        //var gridFieldMedWidth = function(){return sui.GridElementData({hCells:"6"});};
         //var oLayout2 = new sap.ui.commons.form.ResponsiveLayout();
         var oForm1 = new sap.ui.commons.form.Form("F1",{
-            title: new sap.ui.commons.Title({text: "Address Data", tooltip: "Title tooltip"}),
+            /*title: new sap.ui.commons.Title({text: "Address Data", tooltip: "Title tooltip"}),*/
             layout: oLayout1,
             formContainers: [
-                new sap.ui.commons.form.FormContainer("F1C1",{
+                formContainer = sui.FormContainer("F1C1",{
                     title: "Person data",
                     formElements: [
                         new sap.ui.commons.form.FormElement({
-                            fields: [new sap.ui.commons.Image({src: "images/male.jpg", width: "100px",
-                                layoutData: new sap.ui.core.VariantLayoutData({
-                                    multipleLayoutData: [new sap.ui.commons.layout.ResponsiveFlowLayoutData({minWidth: 110}),
-                                        new sap.ui.commons.form.GridElementData({hCells: "2", vCells: 5})]
-                                })
-                            })
-                            ],
-                            layoutData: new sap.ui.commons.layout.ResponsiveFlowLayoutData({weight: 4, margin: false})
+                            label: new sap.ui.commons.Label({text:"Name:"}),
+                            fields: [new sap.ui.commons.TextField({value: "Max"})],
+                            layoutData:gridFieldMedWidth()
                         }),
                         new sap.ui.commons.form.FormElement({
-                            label: new sap.ui.commons.Label({text:"Name",
-                                layoutData: new sap.ui.core.VariantLayoutData({
-                                    multipleLayoutData: [new sap.ui.commons.layout.ResponsiveFlowLayoutData({weight: 1}),
-                                        new sap.ui.commons.form.GridElementData({hCells: "1"})]
-                                })
-                            }),
-                            fields: [new sap.ui.commons.TextField({value: "Max", layoutData: new sap.ui.commons.layout.ResponsiveFlowLayoutData({weight: 4})}),
-                                new sap.ui.commons.TextField({value: "Mustermann", layoutData: new sap.ui.commons.layout.ResponsiveFlowLayoutData({weight: 5})})
-                            ],
-                            layoutData: new sap.ui.commons.layout.ResponsiveFlowLayoutData({linebreak: true, margin: false})
+                            label: new sap.ui.commons.Label({text:"Date of Birth"}),
+                            fields: [new sap.ui.commons.DatePicker({yyyymmdd: "19990909"})],
+                            layoutData:gridFieldMedWidth()
                         }),
                         new sap.ui.commons.form.FormElement({
-                            label: new sap.ui.commons.Label({text:"Date of Birth",
-                                layoutData: new sap.ui.core.VariantLayoutData({
-                                    multipleLayoutData: [new sap.ui.commons.layout.ResponsiveFlowLayoutData({weight: 1}),
-                                        new sap.ui.commons.form.GridElementData({hCells: "1"})]
-                                })
-                            }),
-                            fields: [new sap.ui.commons.DatePicker({yyyymmdd: "19990909",
-                                layoutData: new sap.ui.core.VariantLayoutData({
-                                    multipleLayoutData: [new sap.ui.commons.layout.ResponsiveFlowLayoutData({weight: 4}),
-                                        new sap.ui.commons.form.GridElementData({hCells: "3"})]
-                                })
-                            })
-                            ],
-                            layoutData: new sap.ui.commons.layout.ResponsiveFlowLayoutData({linebreak: true, margin: false})
-                        }),
-                        new sap.ui.commons.form.FormElement({
-                            label: new sap.ui.commons.Label({text:"Gender",
-                                layoutData: new sap.ui.core.VariantLayoutData({
-                                    multipleLayoutData: [new sap.ui.commons.layout.ResponsiveFlowLayoutData({weight: 1}),
-                                        new sap.ui.commons.form.GridElementData({hCells: "1"})]
-                                })
-                            }),
+                            label: new sap.ui.commons.Label({text:"Gender"}),
                             fields: [new sap.ui.commons.RadioButtonGroup({
-                                items: [new sap.ui.core.Item({text: "male"}),
-                                    new sap.ui.core.Item({text: "female"})],
-                                layoutData: new sap.ui.core.VariantLayoutData({
-                                    multipleLayoutData: [new sap.ui.commons.layout.ResponsiveFlowLayoutData({weight: 4}),
-                                        new sap.ui.commons.form.GridElementData({vCells: 2})]
-                                })
-                            })]
+                                items: [
+                                    new sap.ui.core.Item({text: "male"}),
+                                    new sap.ui.core.Item({text: "female"})
+                                ]
+                            })],
+                            layoutData:gridFieldMedWidth()
                         })
                     ]
                 })
