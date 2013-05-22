@@ -5,6 +5,7 @@ This is a boilerplate application for SAPUI5 UX3 shell applications
 
 This builerplate provides the following features:
 - history support and hash routes for tabs
+- minification
 - theming
 - localization (index.html?sap-ui-language=he#tab1)
 - loading animation for SAPUI controls and enhancement of the UX3 shell to support tab busy
@@ -12,8 +13,9 @@ This builerplate provides the following features:
 - many more extensions and enhancements
 
 Coming soon:
-- minification
+
 - login
+- move to grunt for optimizations, testing, etc...
 
 
 The boilerplate app makes use of a SAPUI5 extenstions library at
