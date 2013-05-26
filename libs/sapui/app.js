@@ -1,11 +1,18 @@
-declareName('app.pics');
-app.pics.main = '/SOPWebApplication/AdminUI/secure/images';
+declareName('app.pics.icons');
+app.pics.dir = 'styles/';
+app.pics.icons.dir = app.pics.dir+"icons/";
 
-$.extend(app, {
+$.extend(true, app, {
     pics:{
         icons:{
-            reload: app.pics.main+'/Reload.png',
-            trash: app.pics.main+'/trash_icon.png'
+            facilities:"building_icon.png",
+            lots: "p-icon.png",
+            areas: "blue_area.png",
+            entrances: "entrance.png",
+            gates: "gate.png",
+            getIcon: function(sIcon){
+                return app.pics.icons.dir+this[sIcon];
+            }
         }
     },
     ui:{

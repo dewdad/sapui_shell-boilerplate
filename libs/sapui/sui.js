@@ -106,13 +106,7 @@ sui = {
 		 * AND ONLY new sap.ui.ux3.ToolPopup (sId, mSettings) WILL BE RETURNED
 		 * */
     ToolPopup:function(sId, mSettings) {
-    	if (mSettings.modal == true)
-    	{
-    		var toolPop = new sap.ui.ux3.ToolPopup (sId, mSettings);
-    		toolPop._ensurePopup();
-			toolPop.oPopup._bModal = true;
-    	}
-    	return toolPop;
+    	return new sap.ui.ux3.ToolPopup (sId, mSettings);
     },
     HLayout:function (sId, mSettings) {
         return new sap.ui.commons.layout.HorizontalLayout(sId, mSettings);
@@ -194,6 +188,16 @@ sui = {
      * @name sui.MatrixLayout
      */
     MatrixLayout:function (sId, mSettings) {
+        var settingsIndex = typeof(sId)=='object'? 0: 1;
+        var mlRows = arguments[settingsIndex] && arguments[settingsIndex].rows;
+
+        if(isNotEmpty(mlRows)){
+            mlRows = $.map(mlRows, function(o){
+                var row = !!o.getCells? o: sui.MLRow({cells: sui.MakeMLCells.apply(null, $.isArray(o)?o:[o])});
+                return row;
+            });
+            arguments[settingsIndex].rows = mlRows;
+        }
         return new sap.ui.commons.layout.MatrixLayout(sId, mSettings);
     },
     MLRow:function (sId, mSettings) {
@@ -800,7 +804,7 @@ sui = {
         if(!oSettings.worksetItemSelected){
             arguments[settingsIndex].worksetItemSelected = function (oEvent) {
                 var key = oEvent.getParameter("key");
-                __ignoreHashChange = true
+                __ignoreHashChange = true;
                 navigateToHash(key);
             }
         }
@@ -843,6 +847,11 @@ sui = {
         });
     },
     Panel: function(sId, mSettings){
+        var settingsIndex = typeof(sId)=='object'? 0: 1;
+        var settings = arguments[settingsIndex];
+        var title = settings && settings.title;
+
+        if(title && typeof(title)==='string') arguments[settingsIndex].title = sui.Title({text:title});
         return new sap.ui.commons.Panel (sId, mSettings);
     },
     SplitterV: function(sId, mSettings){
