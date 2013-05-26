@@ -17,7 +17,7 @@ set YUI_BUILD_NAME=app
 
 rem ;; where are yuicompressor-ver.jar and bom file
 ::set YUI_FOLDER=..
-set YUI_FOLDER=..\tools
+set YUI_FOLDER=..\compression
 
 rem ;; a txt file with a list of files to include in the project
 rem ;; NOTE: the file order is preserved
@@ -26,12 +26,12 @@ rem ;; NOTE: if YUI_FOLDER_SOURCE is not set each file must have an absolute pat
 set YUI_FILE_LIST=yuic-js-fileslist.txt
 
 rem ;; where to put min and debug version of the project
-set YUI_FOLDER_DEST=..\libs
+set YUI_FOLDER_DEST=..\..\dist\js
 
 rem ;; where are files specified in the list
 rem ;; NOTE: if files in the list have absolute path please remove this variable
 rem ;;       writing "rem" instead of "set" as prefix
-set YUI_FOLDER_SOURCE=..\libs
+set YUI_FOLDER_SOURCE=..\..\libs
 
 rem ;; specify if you do not want to munge file (obfuscation)
 rem ;; NOTE: YUICompressor is a great tool but sometimes it could have some problem with munge option

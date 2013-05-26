@@ -9,6 +9,15 @@
         data-sap-ui-libs="sap.ui.ux3, sap.ui.commons"
         data-sap-ui-theme="sap_goldreflection"
     ></script>
+    <style type="text/css">
+        .sapUiUx3ShellCanvas{
+            bottom:6px; /* utilize the entire space of the shell's content */
+        }
+        .sapUiUx3ShellContent{
+            height: 90%;
+            /*overflow-y: hidden;*/
+        }
+    </style>
 <!--
         data-sap-ui-theme="sap_goldreflection"
         data-sap-ui-theme-roots='{
@@ -51,10 +60,10 @@
         }else{
             $LAB
                 .script("libs/misc/underscore.js")
-                .script("libs/app.min.js")
+                .script("dist/js/app.min.js")
                     .wait(function(){
                         initApp();
-                    });;
+                    });
         }
 
         // set logging level
