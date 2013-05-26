@@ -5,6 +5,7 @@ sap.ui.jsview("app.tabs.parking_setup", {
     },
 
     createContent : function(oController) {
+        var thisView = this;
         var oTree = sui.Tree(this.createId('tree'), {
             /*title:"", width:"100%",*/
             height:"99%",
@@ -15,86 +16,71 @@ sap.ui.jsview("app.tabs.parking_setup", {
 
         oTree.bindAggregation("nodes", {
             path: "/root",
-            template: sui.TreeNode({text:'{name}', expanded:true}),
+            template: sui.TreeNode({
+                text:'{name}',
+                expanded: false,
+                //icon: '{icon}',
+                icon:{
+                    path:"name",
+                    formatter: function(fValue) {
+                        var type = this.getBindingContext().getPath().match(new RegExp("[^\/]+\(?=\/[^\/]+$\)"))[0];
+                        if(type=="companies"){
+                            return app.pics.icons.dir+fValue.toLowerCase()+".png";
+                        }else{
+                            return app.pics.icons.getIcon(type);
+                        }
+                    }
+                },
+                selected: function(oEvent){
+                    var context = this.getBindingContext();
+                    var cPath = context.getPath();
+                    var contextParts = cPath.split('/');
+                    var type = type = contextParts[contextParts.length-2];
+                    var pane = thisView.panes[type];
+
+                    formContainer.removeAllContent();
+                    formContainer.addContent(pane);
+
+                    pane.bindElement(cPath);
+                }
+            }),
             parameters: {
-                // specify array names which should be displayed
-                // if nothing is specified every array will be displayed
-                // nested arrays where the parent is not in the list won't be displayed
-                // if you don't have arrays in your data structure don't set this parameter at all
-                arrayNames : ["companies","facilities","lots","entrances","areas"]
+                arrayNames : ["companies","facilities","lots","entrances","areas","gates"]
             }
         });
 
-        //var oLayout1 = new sap.ui.commons.form.GridLayout();
-        var oLayout1 = new sap.ui.commons.form.ResponsiveLayout();
-        var formContainer;
-        var gridFieldMedWidth = function(){return new sap.ui.commons.layout.ResponsiveFlowLayoutData({linebreak: true, margin: false})}
-        //var gridFieldMedWidth = function(){return sui.GridElementData({hCells:"6"});};
-        //var oLayout2 = new sap.ui.commons.form.ResponsiveLayout();
-        var oForm1 = new sap.ui.commons.form.Form("F1",{
-            /*title: new sap.ui.commons.Title({text: "Address Data", tooltip: "Title tooltip"}),*/
-            layout: oLayout1,
-            formContainers: [
-                formContainer = sui.FormContainer("F1C1",{
-                    title: "Person data",
-                    formElements: [
-                        new sap.ui.commons.form.FormElement({
-                            label: new sap.ui.commons.Label({text:"Name:"}),
-                            fields: [new sap.ui.commons.TextField({value: "Max"})],
-                            layoutData:gridFieldMedWidth()
-                        }),
-                        new sap.ui.commons.form.FormElement({
-                            label: new sap.ui.commons.Label({text:"Date of Birth"}),
-                            fields: [new sap.ui.commons.DatePicker({yyyymmdd: "19990909"})],
-                            layoutData:gridFieldMedWidth()
-                        }),
-                        new sap.ui.commons.form.FormElement({
-                            label: new sap.ui.commons.Label({text:"Gender"}),
-                            fields: [new sap.ui.commons.RadioButtonGroup({
-                                items: [
-                                    new sap.ui.core.Item({text: "male"}),
-                                    new sap.ui.core.Item({text: "female"})
-                                ]
-                            })],
-                            layoutData:gridFieldMedWidth()
-                        })
-                    ]
-                })
-            ]
-        });
-        /*formContainer.bindAggregation("content", "/company/properties", function(sId, oContext) {
-            var value = oContext.getProperty("value");
-            switch(typeof value) {
-                case "string":
-                    return new sap.ui.commons.TextField(sId, {
-                        value: {
-                            path: "value",
-                            type: new sap.ui.model.type.String()
-                        }
-                    });
-                case "number":
-                    return new sap.ui.commons.TextField(sId, {
-                        value: {
-                            path: "value",
-                            type: new sap.ui.model.type.Float()
-                        }
-                    });
-                case "boolean":
-                    return new sap.ui.commons.CheckBox(sId, {
-                        checked: {
-                            path: "value"
-                        }
-                    });
-            }
-        });*/
-
-        return sui.SplitterV({
+        var formContainer = sui.MLCell();
+        var parkingContainer = sui.SplitterV({
             firstPaneContent:[oTree],
-            secondPaneContent:[oForm1],
+            secondPaneContent:[
+                sui.MatrixLayout({widths:['18px', 'auto'], rows:[[sui.MLCell(), formContainer]]})
+            ],
             splitterPosition: '25%',
             minSizeSecondPane:"70%"
         });
 
+        return parkingContainer;
         //return new sap.ui.commons.TextView({text: 'tab1'});
-    }
+    },
+    panes: (function(){
+        var companyForm = sui.MatrixLayout({width:'auto'});
+        companyForm.x_FormLabelField("Name:",sui.TxtFld({value:'{name}', width:'200px'}));
+
+        var facilityForm = sui.MatrixLayout({width:'auto'});
+        facilityForm.x_FormLabelField("Name:",sui.TxtFld({value:'{name}', width:'200px'}));
+        facilityForm.x_FormLabelField("Address:",sui.TxtFld({value:'{address}', width:'200px'}));
+
+        var lotForm = sui.MatrixLayout({width:'auto'});
+        lotForm.x_FormLabelField("Name:",sui.TxtFld({value:'{name}', width:'200px'}));
+        lotForm.x_FormLabelField("Address:",sui.TxtFld({value:'{address}', width:'200px'}));
+        lotForm.x_FormLabelField("Max Spots:",sui.TxtFld({value:'{max_spots}', width:'80px'}));
+        lotForm.x_FormLabelField("Currently Occupied:",sui.TxtFld({value:'{currently_occupied}', width:'80px'}));
+        lotForm.x_FormLabelField("Max Reservations:",sui.TxtFld({value:'{max_reservations}', width:'80px'}));
+
+        return {
+            companies:sui.Panel({title: "COMPANY", content:[companyForm], showCollapseIcon:false}),
+            facilities: sui.Panel({title: "FACILITY", content:[facilityForm], showCollapseIcon:false}) ,
+            lots: sui.Panel({title: "LOT", content:[lotForm], showCollapseIcon:false})
+        };
+    }())
 });

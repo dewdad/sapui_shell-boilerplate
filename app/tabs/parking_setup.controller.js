@@ -10,43 +10,18 @@ sap.ui.controller("app.tabs.parking_setup", {
                 "name": "root",
                 "companies": [
                     {
-                        "name": "Amdocs",
-                        "facilities": [
-                            {
-                                "name": "Raanana Building 1",
-                                "address": "Hapnina 2, Raanana, Israel",
-                                "coords": [],
-                                "lots": [
-                                    {
-                                        "name": "subsubitem1"
-                                    },
-                                    {
-                                        "name": "subsubitem2"
-                                    }
-                                ]
-                            },
-                            {
-                                "name": "Haifa Building 2",
-                                "address": "Matam Scientific Indusries Center, Haifa, Israel",
-                                "coords": [],
-                                "lots": [
-                                    {
-                                        "name": "west lot"
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
                         "name": "SAP",
+                        "icon": "styles/icons/sap.png",
                         "facilities": [
                             {
                                 "name": "Ranana Building 1",
+                                "icon": "styles/icons/parking_facility.png",
                                 "address": "HaTidhar 15, Raanana, Israel",
                                 "coords": [],
                                 "lots": [
                                     {
                                         "name": "north lot",
+                                        "icon": "styles/icons/p-icon.png",
                                         "max_spots": 100,
                                         "currently_occupied": 44,
                                         "entrances": [
@@ -56,12 +31,12 @@ sap.ui.controller("app.tabs.parking_setup", {
                                                     {
                                                         "name": "north-in",
                                                         "direction": "in",
-                                                        "url":"http://link.to.gate.controller"
+                                                        "url": "http://link.to.gate.controller"
                                                     },
                                                     {
                                                         "name": "north-out",
                                                         "direction": "out",
-                                                        "url":"http://link.to.gate.controller"
+                                                        "url": "http://link.to.gate.controller"
                                                     }
                                                 ]
                                             }
@@ -74,6 +49,7 @@ sap.ui.controller("app.tabs.parking_setup", {
                                     },
                                     {
                                         "name": "east lot",
+                                        "icon": "styles/icons/p-icon.png",
                                         "max_spots": 400,
                                         "entrances": [
                                             {
@@ -82,12 +58,12 @@ sap.ui.controller("app.tabs.parking_setup", {
                                                     {
                                                         "name": "east-in",
                                                         "direction": "in",
-                                                        "url":"http://link.to.gate.controller"
+                                                        "url": "http://link.to.gate.controller"
                                                     },
                                                     {
                                                         "name": "east-out",
                                                         "direction": "out",
-                                                        "url":"http://link.to.gate.controller"
+                                                        "url": "http://link.to.gate.controller"
                                                     }
                                                 ]
                                             },
@@ -97,12 +73,12 @@ sap.ui.controller("app.tabs.parking_setup", {
                                                     {
                                                         "name": "imagine-in",
                                                         "direction": "in",
-                                                        "url":"http://link.to.gate.controller"
+                                                        "url": "http://link.to.gate.controller"
                                                     },
                                                     {
                                                         "name": "imagine-out",
                                                         "direction": "out",
-                                                        "url":"http://link.to.gate.controller"
+                                                        "url": "http://link.to.gate.controller"
                                                     }
                                                 ]
                                             }
@@ -121,6 +97,40 @@ sap.ui.controller("app.tabs.parking_setup", {
                                                 "capacity": 180
                                             }
                                         ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Amdocs",
+                        "icon": "styles/icons/amdocs.png",
+                        "facilities": [
+                            {
+                                "name": "Raanana Building 1",
+                                "icon": "styles/icons/parking_facility.png",
+                                "address": "Hapnina 2, Raanana, Israel",
+                                "coords": [],
+                                "lots": [
+                                    {
+                                        "name": "west lot",
+                                        "icon": "styles/icons/p-icon.png"
+                                    },
+                                    {
+                                        "name": "south lot",
+                                        "icon": "styles/icons/p-icon.png"
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "Haifa Building 2",
+                                "icon": "styles/icons/parking_facility.png",
+                                "address": "Matam Scientific Indusries Center, Haifa, Israel",
+                                "coords": [],
+                                "lots": [
+                                    {
+                                        "name": "west lot",
+                                        "icon": "styles/icons/p-icon.png"
                                     }
                                 ]
                             }

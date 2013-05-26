@@ -25,7 +25,7 @@ sap.ui.commons.layout.MatrixLayout.prototype.x_FormLabelField = function(sLabel 
 
 sap.ui.commons.layout.MatrixLayout.prototype.createAlignedRow = function(object1, object2) {
     var oMLCell1 = new sap.ui.commons.layout.MatrixLayoutCell({
-        hAlign : sui.HAlign.Begin,
+        hAlign : sui.HAlign.End,
         vAlign : sui.VAlign.Top,
         content : [ object1 ]
     });
