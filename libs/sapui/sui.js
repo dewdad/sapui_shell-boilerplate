@@ -48,7 +48,7 @@ sui = {
             }
         }
         var oView = sap.ui.view(viewObj);
-        return (oView.updateView && oView.updateView(viewData)) || oView;
+        return (oView.updateView && viewData && oView.updateView(viewData)) || oView;
     },
     BusyHide: function() {
         try{
