@@ -47,7 +47,14 @@ sui = {
                 return (oElement.updateView && oElement.updateView(viewData)) || oElement;
             }
         }
-        var oView = sap.ui.view(viewObj);
+        
+        var oView;
+	    try{
+	        oView = sap.ui.view(viewObj)
+	    }catch(e){
+	        viewObj.type = 'XML';
+	        oView = sap.ui.view(viewObj);
+	    }
         return (oView.updateView && viewData && oView.updateView(viewData)) || oView;
     },
     BusyHide: function() {
