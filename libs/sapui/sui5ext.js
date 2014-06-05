@@ -826,7 +826,7 @@ sap.ui.model.json.JSONModel.extend("sap.uiext.model.json.JSONModel", {
     },
     setProperty: function(sPath, oValue, oContext){
         var args = arguments;
-        sPath = sui.getBindingStr(sPath); // fix to string if context object
+        var sPath = sui.getBindingStr(sPath); // fix to string if context object
         if(!!oContext){
             if(typeof(oContext) == 'string'){
                sPath = oContext+'/'+sPath;
